@@ -1,19 +1,23 @@
 <template>
-    <label v-if="data.label" :for="data.id">{{ data.label }}</label>
-    <input
-      :id="data.id"
-      :type="data.type || 'text'"
-      :placeholder="data.placeholder"
-      v-model="model"
-    />
+    <div class="field">
+      <label v-if="data.label" :for="data.id" class="label">{{ data.label }}</label>
+      <div class="control">
+        <input
+          :id="data.id"
+          :type="data.type || 'text'"
+          :placeholder="data.placeholder"
+          v-model="model"
+          class="input"
+        />
+      </div>
+    </div>
   </template>
-  
   <script setup lang="ts">
-  import { defineProps, defineEmits, computed } from 'vue';
+  import { computed } from 'vue';
   
   interface DataInterface {
     type?: string;
-    id: string | number;
+    id: any
     placeholder: string;
     label?: string;
   }

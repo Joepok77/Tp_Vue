@@ -1,44 +1,57 @@
 <template>
-    <main class="login_main">
-        <h1>Login page</h1>
-        <form @submit.prevent="submitHandler">
-            <section>
-                <article>
-                    <label for="email"></label>
-                    <input 
-                        v-model="email"
-                        type="email"
-                        id="email"
-                        placeholder="Entrer votre email"
-                        class="input">
-                </article>
-            </section>
-            <section>
-                <article>
-                    <label for="password"></label>
-                    <input 
-                        v-model="password" 
-                        type="password" 
-                        id="password"
-                        placeholder="Entrer votre mdp"
-                        class="input">
-                </article>
-            </section>
-            <section>
-                <button type="submit" class="button is-primary">Valider</button>
-                <button type="reset" class="button is-danger">Réinitialiser</button>
-            </section>
-        </form>
+    <main class="login-container">
+        <div class="card">
+            <div class="card-content">
+                <h1 class="title is-4 has-text-centered">🔐 Connexion</h1>
 
-        <!-- 🔹 Lien vers l'inscription -->
-        <section class="register-section">
-            <button @click="goToRegister" class="register-button">
-                Vous n'avez pas de compte ? Inscrivez-vous
-            </button>
-        </section>
+                <form @submit.prevent="submitHandler">
+                    <!-- Email -->
+                    <div class="field">
+                        <label for="email" class="label">Email</label>
+                        <div class="control">
+                            <input 
+                                v-model="email"
+                                type="email"
+                                id="email"
+                                placeholder="Entrez votre email"
+                                class="input">
+                        </div>
+                    </div>
+
+                    <!-- Mot de passe -->
+                    <div class="field">
+                        <label for="password" class="label">Mot de passe</label>
+                        <div class="control">
+                            <input 
+                                v-model="password" 
+                                type="password" 
+                                id="password"
+                                placeholder="Entrez votre mot de passe"
+                                class="input">
+                        </div>
+                    </div>
+
+                    <!-- Boutons -->
+                    <div class="field is-grouped is-grouped-centered">
+                        <div class="control">
+                            <button type="submit" class="button is-primary">Valider</button>
+                        </div>
+                        <div class="control">
+                            <button type="reset" class="button is-danger">Réinitialiser</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- 🔹 Lien vers l'inscription -->
+                <div class="has-text-centered mt-4">
+                    <button @click="goToRegister" class="button is-link is-light">
+                        Vous n'avez pas de compte ? Inscrivez-vous
+                    </button>
+                </div>
+            </div>
+        </div>
     </main>
 </template>
-
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 import inputValidator from '../utils/input-validator'
@@ -94,23 +107,19 @@ const goToRegister = () => {
 }
 </script>
 
-<style lang="scss" scoped>
-.login_main {
+<style scoped>
+.login-container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
+    margin-top: 50px;
 }
 
-.register-section {
-    margin-top: 20px;
-}
-
-.register-button {
-    background-color: transparent;
-    border: none;
-    color: blue;
-    text-decoration: underline;
-    cursor: pointer;
+.login-card {
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background: white;
 }
 </style>

@@ -1,16 +1,36 @@
 <template>
-  <nav>
-    <router-link to="/">Accueil</router-link> |
-    <router-link to="/chefs">Cuisiniers</router-link> |
-    <router-link to="/login" v-if="!isAuthenticated">Connexion</router-link>
-    <button v-if="isAuthenticated" @click="logout">Déconnexion</button>
+  <!-- Barre de navigation -->
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <router-link class="navbar-item has-text-white" to="/">🏠 Accueil</router-link>
+      <router-link class="navbar-item has-text-white" to="/chefs">👨‍🍳 Cuisiniers</router-link>
+    </div>
+
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        <router-link v-if="!isAuthenticated" class="navbar-item button is-light" to="/login">
+          🔐 Connexion
+        </router-link>
+        
+        <button v-if="isAuthenticated" @click="logout" class="navbar-item button is-danger">
+          🚪 Déconnexion
+        </button>
+      </div>
+    </div>
   </nav>
 
-  <!-- Afficher le panier ici -->
-  <PanierComponent v-if="isAuthenticated" />
+  <!-- Affichage du panier -->
+  <section v-if="isAuthenticated" class="section">
+    <div class="container">
+      <PanierComponent />
+    </div>
+  </section>
 
-  <main>
-    <router-view></router-view>
+  <!-- Contenu principal -->
+  <main class="section">
+    <div class="container">
+      <router-view></router-view>
+    </div>
   </main>
 </template>
 

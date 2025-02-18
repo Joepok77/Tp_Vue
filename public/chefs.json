@@ -1,20 +1,20 @@
 [
     {
       "id": 1,
-      "name": "Chef Pierre",
+      "name": "Chef Johan",
       "specialty": "Cuisine française",
       "dishes": [
         { "id": 1, "name": "Bœuf Bourguignon", "price": 18 },
-        { "id": 2, "name": "Coq au vin", "price": 20 }
+        { "id": 2, "name": "patate a l'huile", "price": 20 }
       ]
     },
     {
       "id": 2,
-      "name": "Chef Luigi",
-      "specialty": "Cuisine italienne",
+      "name": "Chef Landy",
+      "specialty": "Cuisine espagnole",
       "dishes": [
-        { "id": 3, "name": "Lasagnes", "price": 12 },
-        { "id": 4, "name": "Tiramisu", "price": 8 }
+        { "id": 3, "name": "Tapas", "price": 12 },
+        { "id": 4, "name": "Paëlla chorizo et poulet", "price": 20 }
       ]
     }
   ]
