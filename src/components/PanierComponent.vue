@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- Bouton flottant pour ouvrir le panier -->
+    <!-- pour ouvrir le panier -->
     <button class="button is-primary cart-button" @click="togglePanier">
       🛒 Mon Panier ({{ panier.length }})
     </button>
@@ -61,7 +61,7 @@ const validerCommande = () => {
 </script>
 
 <style scoped>
-/* Bouton flottant en bas à droite */
+
 .cart-button {
   position: fixed;
   bottom: 20px;
@@ -71,11 +71,11 @@ const validerCommande = () => {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Sidebar du panier */
+
 .cart-sidebar {
   position: fixed;
-  top: 70px; /* Ajustement pour éviter de chevaucher la navbar */
-  right: -320px; /* Caché par défaut */
+  top: 70px; 
+  right: -320px; 
   width: 320px;
   height: 90vh;
   background: white;
@@ -85,18 +85,18 @@ const validerCommande = () => {
   overflow-y: auto;
 }
 .cart-sidebar.open {
-  right: 20px; /* S'affiche */
+  right: 20px; 
   border-radius: 8px;
 }
 
-/* Bouton de fermeture */
+
 .close-button {
   position: absolute;
   top: 10px;
   right: 10px;
 }
 
-/* Boutons de gestion des produits */
+
 .button.is-warning {
   background-color: orange;
 }

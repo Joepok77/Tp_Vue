@@ -5,7 +5,7 @@
                 <h1 class="title is-4 has-text-centered">🔐 Connexion</h1>
 
                 <form @submit.prevent="submitHandler">
-                    <!-- Email -->
+                 
                     <div class="field">
                         <label for="email" class="label">Email</label>
                         <div class="control">
@@ -18,7 +18,7 @@
                         </div>
                     </div>
 
-                    <!-- Mot de passe -->
+                 
                     <div class="field">
                         <label for="password" class="label">Mot de passe</label>
                         <div class="control">
@@ -31,7 +31,7 @@
                         </div>
                     </div>
 
-                    <!-- Boutons -->
+                  
                     <div class="field is-grouped is-grouped-centered">
                         <div class="control">
                             <button type="submit" class="button is-primary">Valider</button>
@@ -42,7 +42,7 @@
                     </div>
                 </form>
 
-                <!-- 🔹 Lien vers l'inscription -->
+              
                 <div class="has-text-centered mt-4">
                     <button @click="goToRegister" class="button is-link is-light">
                         Vous n'avez pas de compte ? Inscrivez-vous
@@ -101,7 +101,7 @@ const submitHandler = async () => {
     }
 }
 
-// 🔹 Fonction pour rediriger vers RegisterPage
+
 const goToRegister = () => {
     router.push('/register')
 }

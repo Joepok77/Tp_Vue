@@ -3,6 +3,7 @@
       "id": 1,
       "name": "Chef Johan",
       "specialty": "Cuisine française",
+        "image": "/Python.png",
       "dishes": [
         { "id": 1, "name": "Bœuf Bourguignon", "price": 18 },
         { "id": 2, "name": "patate a l'huile", "price": 20 }
@@ -12,10 +13,16 @@
       "id": 2,
       "name": "Chef Landy",
       "specialty": "Cuisine espagnole",
+      "image": "/PostgreSQL.png",
       "dishes": [
         { "id": 3, "name": "Tapas", "price": 12 },
         { "id": 4, "name": "Paëlla chorizo et poulet", "price": 20 }
       ]
     }
   ]
+  
+
+
+
+
   

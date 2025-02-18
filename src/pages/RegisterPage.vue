@@ -5,7 +5,7 @@
                 <h1 class="title is-4 has-text-centered">📝 Inscription</h1>
 
                 <form @submit.prevent="submitHandler">
-                    <!-- Champs du formulaire -->
+                    
                     <div class="field" v-for="field in fields" :key="field.id">
                         <label :for="field.id" class="label">{{ field.label }}</label>
                         <div class="control">
@@ -31,7 +31,7 @@
                     </div>
                 </form>
 
-                <!-- 🔹 Lien vers la connexion -->
+                
                 <div class="has-text-centered mt-4">
                     <button @click="goToLogin" class="button is-link is-light">
                         Déjà un compte ? Se connecter
@@ -59,7 +59,7 @@ const form = ref({
 
 const errors = ref<{ [key: string]: string }>({})
 
-// Champs du formulaire
+
 const fields = [
     { id: 'username', type: 'text', placeholder: 'Entre ton pseudo' },
     { id: 'email', type: 'email', placeholder: 'Entre ton email' },
@@ -67,13 +67,13 @@ const fields = [
     { id: 'confirmPassword', type: 'password', placeholder: 'Confirme ton mot de passe' }
 ]
 
-// Boutons du formulaire
+
 const buttons = [
     { id: 'register-button', type: 'submit', textContent: "S'inscrire" },
     { id: 'reset-button', type: 'reset', textContent: 'Réinitialiser' }
 ]
 
-// Validation en temps réel
+
 watch(() => form.value.email, (val) => {
     errors.value.email = inputValidator(val, 'email') ? '' : 'Email invalide'
 })
@@ -86,7 +86,7 @@ watch(() => form.value.confirmPassword, (val) => {
     errors.value.confirmPassword = val === form.value.password ? '' : 'Les mots de passe ne correspondent pas'
 })
 
-// Fonction de soumission
+
 const submitHandler = () => {
     if (Object.values(errors.value).some(error => error !== '')) {
         alert('Veuillez corriger les erreurs avant de vous inscrire')
@@ -97,7 +97,7 @@ const submitHandler = () => {
     router.push('/login')
 }
 
-// Redirection vers la connexion
+
 const goToLogin = () => {
     router.push('/login')
 }

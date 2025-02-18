@@ -1,5 +1,5 @@
 <template>
-  <!-- Barre de navigation -->
+
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <router-link class="navbar-item has-text-white" to="/">🏠 Accueil</router-link>
@@ -19,14 +19,14 @@
     </div>
   </nav>
 
-  <!-- Affichage du panier -->
+
   <section v-if="isAuthenticated" class="section">
     <div class="container">
       <PanierComponent />
     </div>
   </section>
 
-  <!-- Contenu principal -->
+  
   <main class="section">
     <div class="container">
       <router-view></router-view>
@@ -37,7 +37,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useAuthStore } from './stores/authStore'
-import PanierComponent from './components/PanierComponent.vue' // 🔄 Import correct
+import PanierComponent from './components/PanierComponent.vue' 
 
 const authStore = useAuthStore()
 const isAuthenticated = computed(() => authStore.user !== null)

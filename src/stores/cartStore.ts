@@ -6,10 +6,10 @@ export const useCartStore = defineStore('cart', () => {
     const authStore = useAuthStore()
     const panier = ref<any[]>([]) 
 
-    // Vérifier si l'utilisateur est connecté
+    
     const isAuthenticated = computed(() => authStore.user !== null)
 
-    // Ajouter un produit au panier (avec gestion des quantités)
+    
     const ajouterAuPanier = (produit: any) => {
         if (!isAuthenticated.value) {
             alert("Vous devez être connecté pour ajouter au panier.")
@@ -23,7 +23,7 @@ export const useCartStore = defineStore('cart', () => {
         }
     }
 
-    // Supprimer un seul exemplaire du produit
+    // Supprimer un seul exemplaire du produit peut donc faire -1 sans supprimer tous les articles du meme produit
     const supprimerUnProduit = (produitId: number) => {
         const item = panier.value.find(item => item.id === produitId)
         if (item) {
@@ -48,7 +48,7 @@ export const useCartStore = defineStore('cart', () => {
     return {
         panier,
         ajouterAuPanier,
-        supprimerUnProduit, // Nouvelle fonction
+        supprimerUnProduit, 
         supprimerDuPanier,
         viderPanier,
         isAuthenticated
