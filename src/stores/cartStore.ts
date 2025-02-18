@@ -1,21 +1,56 @@
-import { defineStore } from 'pinia';
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+import { useAuthStore } from './authStore'
 
-export const useCartStore = defineStore('cart', {
-  state: () => ({
-    items: [] as { id: number, name: string, price: number }[], // Liste des plats
-  }),
+export const useCartStore = defineStore('cart', () => {
+    const authStore = useAuthStore()
+    const panier = ref<any[]>([]) 
 
-  getters: {
-    totalItems: (state) => state.items.length, // Nombre d'articles dans le panier
-    totalPrice: (state) => state.items.reduce((sum, item) => sum + item.price, 0), // Prix total
-  },
+    // Vérifier si l'utilisateur est connecté
+    const isAuthenticated = computed(() => authStore.user !== null)
 
-  actions: {
-    addToCart(item: { id: number, name: string, price: number }) {
-      this.items.push(item);
-    },
-    removeFromCart(itemId: number) {
-      this.items = this.items.filter(item => item.id !== itemId);
-    },
-  },
-});
+    // Ajouter un produit au panier (avec gestion des quantités)
+    const ajouterAuPanier = (produit: any) => {
+        if (!isAuthenticated.value) {
+            alert("Vous devez être connecté pour ajouter au panier.")
+            return
+        }
+        const itemExist = panier.value.find(item => item.id === produit.id)
+        if (itemExist) {
+            itemExist.quantite += 1
+        } else {
+            panier.value.push({ ...produit, quantite: 1 })
+        }
+    }
+
+    // Supprimer un seul exemplaire du produit
+    const supprimerUnProduit = (produitId: number) => {
+        const item = panier.value.find(item => item.id === produitId)
+        if (item) {
+            if (item.quantite > 1) {
+                item.quantite -= 1
+            } else {
+                panier.value = panier.value.filter(item => item.id !== produitId)
+            }
+        }
+    }
+
+    // Supprimer complètement un produit
+    const supprimerDuPanier = (produitId: number) => {
+        panier.value = panier.value.filter(item => item.id !== produitId)
+    }
+
+    // Vider tout le panier
+    const viderPanier = () => {
+        panier.value = []
+    }
+
+    return {
+        panier,
+        ajouterAuPanier,
+        supprimerUnProduit, // Nouvelle fonction
+        supprimerDuPanier,
+        viderPanier,
+        isAuthenticated
+    }
+})

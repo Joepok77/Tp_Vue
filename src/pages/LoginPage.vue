@@ -1,50 +1,55 @@
 <template>
     <main class="login_main">
-
         <h1>Login page</h1>
         <form @submit.prevent="submitHandler">
             <section>
                 <article>
                     <label for="email"></label>
                     <input 
-                    v-model="email"
-                    type="email"
-                    id="email"
-                    placeholder="Entrer votre email"
-                    class="input">
+                        v-model="email"
+                        type="email"
+                        id="email"
+                        placeholder="Entrer votre email"
+                        class="input">
                 </article>
             </section>
             <section>
                 <article>
                     <label for="password"></label>
-                    <input v-model="password" type="password" id="password"
-                    placeholder="Entrer votre mdp"
-                    class="input">
-                    
+                    <input 
+                        v-model="password" 
+                        type="password" 
+                        id="password"
+                        placeholder="Entrer votre mdp"
+                        class="input">
                 </article>
             </section>
             <section>
-                <button type="submit"
-                class="button is-primary">Valider</button>
+                <button type="submit" class="button is-primary">Valider</button>
                 <button type="reset" class="button is-danger">Réinitialiser</button>
             </section>
         </form>
+
+        <!-- 🔹 Lien vers l'inscription -->
+        <section class="register-section">
+            <button @click="goToRegister" class="register-button">
+                Vous n'avez pas de compte ? Inscrivez-vous
+            </button>
+        </section>
     </main>
 </template>
 
 <script lang="ts" setup>
-import {ref, watch} from 'vue'
-import inputValidator from '../utils/input-validator';
-import  {useRouter} from "vue-router"
+import { ref, watch } from 'vue'
+import inputValidator from '../utils/input-validator'
+import { useRouter } from "vue-router"
 import { useAuthStore } from '../stores/authStore'
+
 const authStore = useAuthStore()
+const router = useRouter()
 
-const router= useRouter()
-
-const email= ref('')
-const password= ref('')
-
-
+const email = ref('')
+const password = ref('')
 
 watch(email, (val) => {
     console.log(val, inputValidator(val, 'email'))
@@ -52,8 +57,6 @@ watch(email, (val) => {
 watch(password, (val) => {
     console.log(val, inputValidator(val, 'password'))
 })
-
-
 
 const submitHandler = async () => {
     try {
@@ -77,7 +80,7 @@ const submitHandler = async () => {
 
         console.log('Connexion réussie')
 
-        authStore.login({ id: user.id, name: user.name, email: user.email }) // ✅ Ajoute le nom
+        authStore.login({ id: user.id, name: user.name, email: user.email }) 
         router.push('/')
     } catch (error) {
         console.error("Erreur lors de la connexion :", error)
@@ -85,13 +88,29 @@ const submitHandler = async () => {
     }
 }
 
-
-const inputHandler = function(){
-
+// 🔹 Fonction pour rediriger vers RegisterPage
+const goToRegister = () => {
+    router.push('/register')
 }
 </script>
 
 <style lang="scss" scoped>
-.login_main{
+.login_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
 
-}</style>
+.register-section {
+    margin-top: 20px;
+}
+
+.register-button {
+    background-color: transparent;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+</style>

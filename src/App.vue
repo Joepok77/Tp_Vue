@@ -6,21 +6,23 @@
     <button v-if="isAuthenticated" @click="logout">Déconnexion</button>
   </nav>
 
+  <!-- Afficher le panier ici -->
+  <PanierComponent v-if="isAuthenticated" />
+
   <main>
-    <router-view></router-view> <!-- C'est ici que LoginPage doit s'afficher -->
+    <router-view></router-view>
   </main>
 </template>
 
 <script setup>
-import { useAuthStore } from './stores/authStore';
-import { computed } from 'vue';
+import { computed } from 'vue'
+import { useAuthStore } from './stores/authStore'
+import PanierComponent from './components/PanierComponent.vue' // 🔄 Import correct
 
-const authStore = useAuthStore();
-const isAuthenticated = computed(() => authStore.user !== null);
+const authStore = useAuthStore()
+const isAuthenticated = computed(() => authStore.user !== null)
 
 const logout = () => {
-  authStore.logout();
-};
+  authStore.logout()
+}
 </script>
-
-

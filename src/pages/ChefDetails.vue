@@ -7,7 +7,7 @@
     <ul>
       <li v-for="dish in chef.dishes" :key="dish.id">
         {{ dish.name }} - {{ dish.price }}€
-        <button @click="addToCart(dish)">Ajouter au panier</button>
+        <button @click="ajouterAuPanier(dish)">Ajouter au panier</button>
       </li>
     </ul>
   </div>
@@ -32,7 +32,7 @@ onMounted(async () => {
   }
 });
 
-const addToCart = (dish) => {
-  cartStore.addToCart(dish);
+const ajouterAuPanier  = (dish) => {
+  cartStore.ajouterAuPanier (dish);
 };
 </script>

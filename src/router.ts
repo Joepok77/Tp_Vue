@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage.vue'
 import SessionPage from './pages/SessionPage.vue'
 import chefList from './pages/chefList.vue'
 import ChefDetails from './pages/ChefDetails.vue'
+import RegisterPage from './pages/RegisterPage.vue'
 
 const routes = [
     {
@@ -17,6 +18,11 @@ const routes = [
     {
         path: '/session/:id',
         component: SessionPage
+    },
+
+    {
+        path: '/register',
+        component: RegisterPage
     },
 
     {
