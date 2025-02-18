@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "name": "Chef Pierre",
+      "specialty": "Cuisine française",
+      "dishes": [
+        { "id": 1, "name": "Bœuf Bourguignon", "price": 18 },
+        { "id": 2, "name": "Coq au vin", "price": 20 }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Chef Luigi",
+      "specialty": "Cuisine italienne",
+      "dishes": [
+        { "id": 3, "name": "Lasagnes", "price": 12 },
+        { "id": 4, "name": "Tiramisu", "price": 8 }
+      ]
+    }
+  ]
+  
