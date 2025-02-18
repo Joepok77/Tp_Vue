@@ -4,6 +4,7 @@
       "name": "Chef Johan",
       "specialty": "Cuisine française",
         "image": "/Python.png",
+        "description": "Expert en plats automatisés et en recettes optimisées, Chef Johan transforme chaque plat en un festin délicieux. avec un cursus hotellerie il vous accompagnera midi et soir",
       "dishes": [
         { "id": 1, "name": "Bœuf Bourguignon", "price": 18 },
         { "id": 2, "name": "patate a l'huile", "price": 20 }
@@ -14,6 +15,7 @@
       "name": "Chef Landy",
       "specialty": "Cuisine espagnole",
       "image": "/PostgreSQL.png",
+      "description": "Expert en plats automatisés et en recettes optimisées, Chef Johan transforme chaque plat en un festin délicieux. avec un cursus hotellerie il vous accompagnera midi et soir",
       "dishes": [
         { "id": 3, "name": "Tapas", "price": 12 },
         { "id": 4, "name": "Paëlla chorizo et poulet", "price": 20 }
@@ -23,6 +25,3 @@
   
 
 
-
-
-  
